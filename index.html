@@ -58,7 +58,7 @@
             httpd.getURL(function(url){
                 if(url.length > 0) {
                     //document.getElementById('url').innerHTML = "server is up: <a href='" + url + "' target='_blank'>" + url + "</a>";
-					alert("Server is up, starting earth..");
+					alert("Server is up, starting earth.. " + url);
 					
 					//Start webGL Earth
 					initialize();
@@ -79,7 +79,7 @@
                       // if no wifi or no cell, "127.0.0.1" will be returned.
                         //document.getElementById('url').innerHTML = "server is started: <a href='" + url + "' target='_blank'>" + url + "</a>";
 						
-						alert("Server is up, starting earth..");
+						alert("Server is up, starting earth.. " + url);
 						
 						//Start webGL Earth
 						initialize();
@@ -125,7 +125,7 @@
 	
       function initialize() {
         if (window.location.href.substr(0, 5) === 'file:')
-          alert("This file must be accessed via http:// or https:// to run properly.");
+          alert("This file must be accessed via http:// or https:// to run properly: " + window.location.href);
 		  
 		  
         var earth = new WE.map('earth_div');
