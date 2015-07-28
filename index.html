@@ -1,13 +1,10 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <script src="v2/api.js"></script>
-    <script>
-	
-	
-	
-	
-	
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+	<script type="text/javascript" charset="utf-8">
 	
 	
 	var httpd = null;
@@ -28,8 +25,8 @@
 	
 	function onLoad() {
 		alert("Document loaded, waiting for device..");
-        //document.addEventListener("deviceready", onDeviceReady, false);
-		onDeviceReady();
+        document.addEventListener("deviceready", onDeviceReady, false);
+		//onDeviceReady();
     }
 	
 	
@@ -115,12 +112,13 @@
 	
 	
 	
+	</script>
 	
 	
 	
 	
-	
-	
+	<script src="v2/api.js"></script>
+    <script>
 	
 	
 	
