@@ -17,11 +17,22 @@
         WebGL Earth Test
     </author>
 	
-	<preference name='phonegap-version' value='cli-5.1.1' />
 	
+	<!-- RUN NEWEST CORDOVA AND CROSSWALK -->
+	<preference name='phonegap-version' value='cli-5.1.1' />
 	<gap:plugin name='org.crosswalk.engine' version='1.3.0' source='pgb' />
 	
+	
+	<!-- DEVICE FUNCTIONS -->
+	<gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+	
+	
+	
+	<!-- WEBSERVER -->
 	<gap:plugin name="com.rjfun.cordova.httpd" version="0.9.0" />
+	
+	
 	
 	<icon src="icon.png" />
 	
