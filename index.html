@@ -14,17 +14,17 @@
 	
     function onDeviceReady() {
 		
-		//alert("Device is ready, setting up http..");
+		alert("Device is ready, setting up http..");
         httpd = ( cordova && cordova.plugins && cordova.plugins.CorHttpd ) ? cordova.plugins.CorHttpd : null;
 		
-		//alert("Starting server..");
+		alert("Starting http server..");
 		startServer("");
 	
     }
 	
 	
 	function onLoad() {
-		//alert("Document loaded, waiting for device..");
+		alert("Document loaded, waiting for device..");
         document.addEventListener("deviceready", onDeviceReady, false);
 		//onDeviceReady();
     }
@@ -58,7 +58,7 @@
             httpd.getURL(function(url){
                 if(url.length > 0) {
                     //document.getElementById('url').innerHTML = "server is up: <a href='" + url + "' target='_blank'>" + url + "</a>";
-					//alert("Server is up, starting earth.. " + url);
+					alert("Server is up, starting earth.. " + url + "/earth.html");
 					
 					//Start webGL Earth
 					openPage(url + '/earth.html');return false;
@@ -80,7 +80,7 @@
                       // if no wifi or no cell, "127.0.0.1" will be returned.
                         //document.getElementById('url').innerHTML = "server is started: <a href='" + url + "' target='_blank'>" + url + "</a>";
 						
-						//alert("Server is up, starting earth.. " + url);
+						alert("Server was started, starting earth.. " + url + "/earth.html");
 						
 						//Start webGL Earth
 						openPage(url + '/earth.html');return false;
@@ -113,8 +113,21 @@
     }
 	
 	
-	
 	</script>
+    
+    <script type="text/javascript" charset="utf-8">
+    function openPage(url)
+	{
+		
+        var ref = window.open(url, '_blank', 'location=yes');
+        ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		return false;
+    }
+	
+	
+</script>
 	
 	
 	
