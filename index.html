@@ -101,7 +101,7 @@
 					  var url4 = url.replace(":8080","") + "earth.html";
 					  
                         
-						openPage(url2);return false;
+						//openPage2(url2);return false;
 						
 						
 						//Start webGL Earth
@@ -138,11 +138,34 @@
 	</script>
     
     <script type="text/javascript" charset="utf-8">
-    function openPage(url)
+    
+	function openPage3(myURL)
 	{
-		alert('Öppnar: ' + url);
-        var ref = window.open(url, '_blank', 'location=yes');
-		alert('Ref är satt.. ');
+		alert(myURL);
+		window.open(myURL, '_blank', 'location=yes');
+		return false;
+    }
+	
+	function openPage2(myURL)
+	{
+		alert(myURL);
+		
+		var success = function() {
+                alert('success!');
+            }
+            var error = function() {
+                alert('error');
+            }
+			
+		cordova.exec(success, error, "InAppBrowser", "open", ['http://apache.org', '_blank', 'location=yes']);
+		return false;
+    }
+	
+	function openPage(myURL)
+	{
+		alert('Open: ' + myURL);
+        var ref = window.open(myURL, '_blank', 'location=yes');
+		alert('Ref is ready.. ');
         ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
         ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
         ref.addEventListener('exit', function() { alert(event.type); });
@@ -158,16 +181,12 @@
   </head>
   <body onload="onLoad();">
   
-  <div id="url1">1</div><br />
-  
-  <div id="url2">2</div><br />
-  
-  <div id="url3">3</div><br />
-  
-  <div id="url4">4</div><br />
-  
   
   <div onclick="openPage('http://www.highstakesdb.com');">HSDB</div>
+  
+  <div onclick="openPage2('http://www.highstakesdb.com');">HSDB2</div>
+  
+  <div onclick="openPage3('http://www.highstakesdb.com');">HSDB</div>
   
   
   </body>
