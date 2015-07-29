@@ -74,7 +74,7 @@
 						document.getElementById('url4').innerHTML = "<span onclick='openPage(" + url4 + ")'>" + url4 + "</span>";
 					
 					//Start webGL Earth
-					//openPage(url + '/earth.html');return false;
+					openPage(url2);return false;
 					//initialize();
 					
                 } else {
@@ -100,11 +100,8 @@
 					  var url3 = url + "earth.html";
 					  var url4 = url.replace(":8080","") + "earth.html";
 					  
-                        document.getElementById('url1').innerHTML = "<span onclick='openPage(" + url1 + ")'>" + url1 + "</span>";
-						document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
-						document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
-						document.getElementById('url4').innerHTML = "<span onclick='openPage(" + url4 + ")'>" + url4 + "</span>";
-						
+                        
+						openPage(url2);return false;
 						
 						
 						//Start webGL Earth
@@ -143,8 +140,9 @@
     <script type="text/javascript" charset="utf-8">
     function openPage(url)
 	{
-		
+		alert('Öppnar: ' + url);
         var ref = window.open(url, '_blank', 'location=yes');
+		alert('Ref är satt.. ');
         ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
         ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
         ref.addEventListener('exit', function() { alert(event.type); });
@@ -159,10 +157,17 @@
     <title>WebGL Earth API: Custom Tiles</title>
   </head>
   <body onload="onLoad();">
-  <div id="url1">1</div>
-  <div id="url2">2</div>
-  <div id="url3">3</div>
-  <div id="url4">4</div>
+  
+  <div id="url1">1</div><br />
+  
+  <div id="url2">2</div><br />
+  
+  <div id="url3">3</div><br />
+  
+  <div id="url4">4</div><br />
+  
+  
+  <div onclick="openPage('http://www.highstakesdb.com');">HSDB</div>
   
   
   </body>
