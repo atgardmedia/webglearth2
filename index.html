@@ -58,10 +58,23 @@
             httpd.getURL(function(url){
                 if(url.length > 0) {
                     //document.getElementById('url').innerHTML = "server is up: <a href='" + url + "' target='_blank'>" + url + "</a>";
-					alert("Server is up, starting earth.. " + url + "/earth.html");
+					//alert("Server is up, starting earth.. " + url + "/earth.html");
+					
+					alert("Server is up " + url);
+					  
+					  var url1 = url + "/earth.html";
+					  var url2 = url.replace(":8080","") + "/earth.html";
+					  
+					  var url3 = url + "earth.html";
+					  var url4 = url.replace(":8080","") + "earth.html";
+					  
+                        document.getElementById('url1').innerHTML = "<span onclick='openPage(" + url1 + ")'>" + url1 + "</span>";
+						document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
+						document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
+						document.getElementById('url4').innerHTML = "<span onclick='openPage(" + url4 + ")'>" + url4 + "</span>";
 					
 					//Start webGL Earth
-					openPage(url + '/earth.html');return false;
+					//openPage(url + '/earth.html');return false;
 					//initialize();
 					
                 } else {
@@ -78,12 +91,24 @@
                       // if server is up, it will return the url of http://<server ip>:port/
                       // the ip is the active network connection
                       // if no wifi or no cell, "127.0.0.1" will be returned.
-                        //document.getElementById('url').innerHTML = "server is started: <a href='" + url + "' target='_blank'>" + url + "</a>";
+					  
+					  alert("Server was started: " + url);
+					  
+					  var url1 = url + "/earth.html";
+					  var url2 = url.replace(":8080","") + "/earth.html";
+					  
+					  var url3 = url + "earth.html";
+					  var url4 = url.replace(":8080","") + "earth.html";
+					  
+                        document.getElementById('url1').innerHTML = "<span onclick='openPage(" + url1 + ")'>" + url1 + "</span>";
+						document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
+						document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
+						document.getElementById('url4').innerHTML = "<span onclick='openPage(" + url4 + ")'>" + url4 + "</span>";
 						
-						alert("Server was started, starting earth.. " + url + "/earth.html");
+						
 						
 						//Start webGL Earth
-						openPage(url + '/earth.html');return false;
+						//openPage(url + '/earth.html');return false;
 						
 						
                     }, function( error ){
@@ -134,5 +159,11 @@
     <title>WebGL Earth API: Custom Tiles</title>
   </head>
   <body onload="onLoad();">
+  <div id="url1">1</div>
+  <div id="url2">2</div>
+  <div id="url3">3</div>
+  <div id="url4">4</div>
+  
+  
   </body>
 </html>
