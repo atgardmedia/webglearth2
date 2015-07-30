@@ -1,6 +1,7 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
@@ -14,17 +15,17 @@
 	
     function onDeviceReady() {
 		
-		alert("Device is ready, setting up http..");
+		//alert("Device is ready, setting up http..");
         //httpd = ( cordova && cordova.plugins && cordova.plugins.CorHttpd ) ? cordova.plugins.CorHttpd : null;
 		
-		alert("Starting http server..");
-		//startServer("");
+		//alert("Starting http server..");
+		startServer("");
 	
     }
 	
 	
 	function onLoad() {
-		alert("Document loaded, waiting for device..");
+		//alert("Document loaded, waiting for device..");
         document.addEventListener("deviceready", onDeviceReady, false);
 		//onDeviceReady();
     }
@@ -57,25 +58,14 @@
             // before start, check whether its up or not
             httpd.getURL(function(url){
                 if(url.length > 0) {
-                    //document.getElementById('url').innerHTML = "server is up: <a href='" + url + "' target='_blank'>" + url + "</a>";
-					//alert("Server is up, starting earth.. " + url + "/earth.html");
 					
 					alert("Server is up " + url);
 					  
-					  var url1 = url + "/earth.html";
-					  var url2 = url.replace(":8080","") + "/earth.html";
-					  
-					  var url3 = url + "earth.html";
-					  var url4 = url.replace(":8080","") + "earth.html";
-					  
-                        document.getElementById('url1').innerHTML = "<span onclick='openPage(" + url1 + ")'>" + url1 + "</span>";
-						document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
-						document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
-						document.getElementById('url4').innerHTML = "<span onclick='openPage(" + url4 + ")'>" + url4 + "</span>";
-					
-					//Start webGL Earth
-					openPage(url2);return false;
-					//initialize();
+					var url2 = url.replace(":8080","") + "/test.html";
+					var url3 = url.replace(":8080","") + "/earth.html";
+	
+					document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
+					document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
 					
                 } else {
                     /* wwwroot is the root dir of web server, it can be absolute or relative path
@@ -92,20 +82,13 @@
                       // the ip is the active network connection
                       // if no wifi or no cell, "127.0.0.1" will be returned.
 					  
-					  alert("Server was started: " + url);
+					alert("Server was started " + url);
 					  
-					  var url1 = url + "/earth.html";
-					  var url2 = url.replace(":8080","") + "/earth.html";
-					  
-					  var url3 = url + "earth.html";
-					  var url4 = url.replace(":8080","") + "earth.html";
-					  
-                        
-						//openPage2(url2);return false;
-						
-						
-						//Start webGL Earth
-						//openPage(url + '/earth.html');return false;
+					var url2 = url.replace(":8080","") + "/test.html";
+					var url3 = url.replace(":8080","") + "/earth.html";
+	
+					document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
+					document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
 						
 						
                     }, function( error ){
@@ -139,36 +122,40 @@
     
     <script type="text/javascript" charset="utf-8">
     
-	function openPage3(myURL)
-	{
-		alert(myURL);
-		window.open(myURL, '_blank', 'location=yes');
-		return false;
-    }
-	
-	function openPage2(myURL)
-	{
-		alert(myURL);
-		
-		var success = function() {
-                alert('success!');
-            }
-            var error = function() {
-                alert('error');
-            }
-			
-		cordova.exec(success, error, "InAppBrowser", "open", ['http://apache.org', '_blank', 'location=yes']);
-		return false;
-    }
+	//function openPage3(myURL)
+//	{
+//		alert(myURL);
+//		window.open(myURL, '_blank', 'location=yes');
+//		return false;
+//    }
+//	
+//	function openPage2(myURL)
+//	{
+//		alert(myURL);
+//		
+//		var success = function() {
+//                alert('success!');
+//            }
+//            var error = function() {
+//                alert('error');
+//            }
+//			
+//		cordova.exec(success, error, "InAppBrowser", "open", ['http://apache.org', '_blank', 'location=yes']);
+//		return false;
+//    }
 	
 	function openPage(myURL)
 	{
 		alert('Open: ' + myURL);
-        var ref = window.open(myURL, '_blank', 'location=yes');
+        
+		var ref = window.open(myURL);
+		
 		alert('Ref is ready.. ');
-        ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
         ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
         ref.addEventListener('exit', function() { alert(event.type); });
+		
 		return false;
     }
 	
@@ -179,15 +166,18 @@
 	
     <title>WebGL Earth API: Custom Tiles</title>
   </head>
+  
   <body onload="onLoad();">
   
   
-  <div onclick="openPage('http://www.highstakesdb.com');">HSDB</div>
+	<div onclick="openPage('test.html');">LOCAL TEST.HTML</div><br /><br />
+    
+    <div onclick="openPage('earth.html');">LOCAL EARTH.HTML</div><br /><br />
   
-  <div onclick="openPage2('http://www.highstakesdb.com');">HSDB2</div>
-  
-  <div onclick="openPage3('http://www.highstakesdb.com');">HSDB</div>
-  
-  
+	<div id='url2'></div><br /><br />
+
+	<div id='url3'></div><br /><br />
+
+
   </body>
 </html>
