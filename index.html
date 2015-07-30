@@ -12,6 +12,9 @@
 	
 	var url2;
 	var url3;
+	
+	var url4;
+	var url5;
 
 	
     function onDeviceReady() {
@@ -64,6 +67,9 @@
 					  
 					url2 = "'" + url.replace(":8080", "") + "/test.html'";
 					url3 = "'" + url.replace(":8080", "") + "/earth.html'";
+					
+					url4 = "" + url.replace(":8080", "") + "/test.html";
+					url5 = "" + url.replace(":8080", "") + "/earth.html";
 	
 					//document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
 					//document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
@@ -87,6 +93,9 @@
 					  
 					url2 = "'" + url.replace(":8080", "") + "/test.html'";
 					url3 = "'" + url.replace(":8080", "") + "/earth.html'";
+					
+					url4 = "" + url.replace(":8080", "") + "/test.html";
+					url5 = "" + url.replace(":8080", "") + "/earth.html";
 	
 					//document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
 					//document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
@@ -190,6 +199,81 @@
 		return false;
     }
 	
+	function openPage4()
+	{
+		alert('Open: ' + url4);
+        
+		var ref = window.open(url4);
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
+	function openPage5()
+	{
+		alert('Open: ' + url5);
+        
+		var ref = window.open(url5, '_self');
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
+	function openPage6()
+	{
+		alert('Open: http://apache.org');
+        
+		var ref = window.open('http://apache.org');
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
+	function openPage7()
+	{
+		alert('Open: http://apache.org', '_self');
+        
+		var ref = window.open('http://apache.org');
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
+	function openPage8()
+	{
+		alert('Open: http://apache.org inappbrowser');
+        
+		var ref = window.open('http://apache.org', '_blank', 'location=yes');
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
 	
 </script>
 	
@@ -208,6 +292,16 @@
 	<div onclick="openPage2();">LOCAL TEST.HTML</div><br /><br />
     
     <div onclick="openPage3();">LOCAL EARTH.HTML</div><br /><br />
+    
+    <div onclick="openPage4();">LOCAL TEST.HTML (WITHOUT ')</div><br /><br />
+    
+    <div onclick="openPage5();">LOCAL EARTH.HTML (WITHOUT ')</div><br /><br />
+    
+    <div onclick="openPage6();">Apache webview</div><br /><br />
+    
+    <div onclick="openPage7();">Apache webview SELF</div><br /><br />
+    
+    <div onclick="openPage8();">Apache InAppBrowser</div><br /><br />
 
 
   </body>
