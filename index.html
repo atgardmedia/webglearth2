@@ -10,7 +10,8 @@
 	
 	var httpd = null;
 	
-	
+	var url2;
+	var url3;
 
 	
     function onDeviceReady() {
@@ -61,11 +62,11 @@
 					
 					alert("Server is up " + url);
 					  
-					var url2 = url.replace(":8080","") + "/test.html";
-					var url3 = url.replace(":8080","") + "/earth.html";
+					url2 = "'" + url.replace(":8080", "") + "/test.html'";
+					url3 = "'" + url.replace(":8080", "") + "/earth.html'";
 	
-					document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
-					document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
+					//document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
+					//document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
 					
                 } else {
                     /* wwwroot is the root dir of web server, it can be absolute or relative path
@@ -84,11 +85,11 @@
 					  
 					alert("Server was started " + url);
 					  
-					var url2 = url.replace(":8080","") + "/test.html";
-					var url3 = url.replace(":8080","") + "/earth.html";
+					url2 = "'" + url.replace(":8080", "") + "/test.html'";
+					url3 = "'" + url.replace(":8080", "") + "/earth.html'";
 	
-					document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
-					document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
+					//document.getElementById('url2').innerHTML = "<span onclick='openPage(" + url2 + ")'>" + url2 + "</span>";
+					//document.getElementById('url3').innerHTML = "<span onclick='openPage(" + url3 + ")'>" + url3 + "</span>";
 						
 						
                     }, function( error ){
@@ -159,6 +160,36 @@
 		return false;
     }
 	
+	function openPage2()
+	{
+		alert('Open: ' + url2);
+        
+		var ref = window.open(url2);
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
+	function openPage3()
+	{
+		alert('Open: ' + url3);
+        
+		var ref = window.open(url3);
+		
+		alert('Ref is ready.. ');
+        
+		ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+        ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+        ref.addEventListener('exit', function() { alert(event.type); });
+		
+		return false;
+    }
+	
 	
 </script>
 	
@@ -174,9 +205,9 @@
     
     <div onclick="openPage('earth.html');">LOCAL EARTH.HTML</div><br /><br />
   
-	<div id='url2'></div><br /><br />
-
-	<div id='url3'></div><br /><br />
+	<div onclick="openPage2();">LOCAL TEST.HTML</div><br /><br />
+    
+    <div onclick="openPage3();">LOCAL EARTH.HTML</div><br /><br />
 
 
   </body>
